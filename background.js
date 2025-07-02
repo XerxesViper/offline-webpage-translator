@@ -1,4 +1,4 @@
-browser.browserAction.onClicked.addListener(tab =>
+chrome.action.onClicked.addListener(tab =>
 {
-	browser.tabs.sendMessage(tab.id, { action: browser.runtime.id })
+	chrome.tabs.sendMessage(tab.id, { action: chrome.runtime.id })
 })

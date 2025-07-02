@@ -1,16 +1,10 @@
 {
-	"manifest_version"	: 2,
+	"manifest_version"	: 3,
 	"name"	: "Cunning Linguist - Translate locally",
 	"version"	: "0.1",
 	"description"	: "Translate any website using local Ollama LLM backend",
-	"permissions"	: ["activeTab", "storage", "*://127.0.0.1/*", "*://localhost/*"],
-	"applications":
-	{
-		"gecko":
-		{
-			"id": "fftranslator@gerold.meisinger.gitlab.com"
-		}
-	},	
+	"permissions"	: ["storage"],
+	"host_permissions": ["*://127.0.0.1/*", "*://localhost/*", "<all_urls>"],
 	"icons":
 	{
 		"48"	: "icon48.png",
@@ -18,15 +12,13 @@
 	},
 	"options_ui":
 	{
-		"page"	: "options.html",
-		"browser_style"	: true
+		"page"	: "options.html"
 	},
 	"background":
 	{
-		"scripts"	: ["background.js"],
-		"persistent"	: false
+		"service_worker"	: "background.js"
 	},
-	"browser_action":
+	"action":
 	{
 		"default_icon"	: "icon48.png",
 		"default_title"	: "Translate current tab or selection"
