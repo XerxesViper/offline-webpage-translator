@@ -38,10 +38,10 @@ function filterNode(node)
 
 async function run()
 {
-	const res = await fetch(browser.runtime.getURL('settings.json'))
+	const res = await fetch(chrome.runtime.getURL('settings.json'))
 	const settingsDefault = await res.json()
 	
-	const settings = await browser.storage.sync.get(settingsDefault)
+	const settings = await chrome.storage.sync.get(settingsDefault)
 	//console.log(JSON.stringify(settings))
 
 	const selection = window.getSelection()
@@ -107,10 +107,10 @@ async function run()
 	}
 }
 
-browser.runtime.onMessage.addListener((message, sender, sendResponse) =>
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) =>
 {
-	//console.log(`${message.action} ${browser.runtime.id}`)
-	if (message.action === browser.runtime.id)
+	//console.log(`${message.action} ${chrome.runtime.id}`)
+	if (message.action === chrome.runtime.id)
 	{
 		run()
 	}

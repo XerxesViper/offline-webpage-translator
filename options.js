@@ -1,7 +1,7 @@
 let settingsDefault = {}
 async function initSettings(ev)
 {
-	const res	= await fetch(browser.runtime.getURL('settings.json'))
+	const res	= await fetch(chrome.runtime.getURL('settings.json'))
 	settingsDefault	= await res.json()
 
 	for (const key of Object.keys(settingsDefault))
@@ -16,7 +16,7 @@ async function loadSettings(ev)
 {
 	try
 	{
-		settings = await browser.storage.sync.get(settingsDefault)
+		settings = await chrome.storage.sync.get(settingsDefault)
 		for (const [key, value] of Object.entries(settings))
 		{
 			document.getElementById(key).value = value
@@ -46,7 +46,7 @@ async function saveSettings(ev)
 
 	try
 	{
-		await browser.storage.sync.set(settings)
+		await chrome.storage.sync.set(settings)
 		console.log(`saveSettings: ${JSON.stringify(settings)}`)
 	}
 	catch(e)
