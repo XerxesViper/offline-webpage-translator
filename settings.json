@@ -1,0 +1,8 @@
+{
+	"url"	: "http://127.0.0.1:11434/api/generate",
+	"system"	: "You are a ${targetLang} language translator",
+	"prompt"	: "Please translate the following text to ${targetLang} by ONLY responding with the translated ${targetLang} text (without adding any additional comments). Original text: ${text}",
+	"model"	: "llama3.1:8b",
+	"targetLang"	: "german",
+	"requestBody"	: "{\n    \"model\": \"${model}\",\n    \"system\": \"${system}\",\n    \"prompt\": \"${prompt}\",\n    \"stream\": false,\n    \"keep_alive\": \"1h\"\n}"
+}
